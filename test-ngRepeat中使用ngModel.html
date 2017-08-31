@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="angular.js"></script>
+	</head>
+	<body ng-app="app">
+		
+		<div ng-controller="DetailsController">
+			<button ng-click="fun()">添加</button>
+	        <ul>
+	            <li ng-repeat=" p in pepoles">
+	                ID:{{p.id}}<br />
+	                name:{{p.name}}<br />
+	                gender:{{p.gender}}<br />
+	                <input type="text" name="name" value="{{p.name}}" ng-model="p.name" />
+                	<button ng-click="changeName(p)">更改</button>
+	            </li>	            
+	        </ul>	
+	    </div>
+	    
+	    <script>
+	    	var app = angular.module('app', []);
+	        app.controller('DetailsController', function ($scope) {
+	        	 $scope.pepoles = [{ 'id': 1, 'name': 'zhangsan', 'gender': '男' }, { 'id': 2, 'name': 'zhangsan2', 'gender': '男' }, { 'id': 3, 'name': 'zhangsan3', 'gender': '男' }];
+	        	$scope.changeName = function (item) {
+	                console.log(item);
+	            };
+
+	            console.log($scope.pepoles.length);
+	            $scope.fun = function(){
+	            	console.log($scope.pepoles);
+	            	var obj = {};
+	            	$scope.pepoles.push(obj);
+	            	console.log($scope.pepoles)
+	            }
+	        });
+	    </script>
+		
+	</body>
+</html>

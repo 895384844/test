@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      list-style: none;
+    }
+    .selectContainer{position:relative; width:262px; display:inline-block; _display:inline; _zoom:1; z-index:1000; background:#FFF; border:1px solid #CCC}
+    .selectContainer input{}
+    .selectContainer .selectOption{min-width:180px; padding:0 5px; line-height:25px; height:25px; white-space:nowrap; overflow:hidden;border:none; width:250px; z-index:1000}
+    .selectContainer .shows{width:20px; height:20px; position:absolute; right:2px; top:2px; }
+    .selectContainer ul{position:absolute; width:100%; top:25px; left:-1px; border-bottom:1px solid #CCC; display:none;}
+    .selectContainer ul li{padding:0 5px; border:1px solid #CCC; border-bottom:1px solid #EEE; border-top:none; line-height:25px; width:252px; background:#FFF; cursor:pointer}
+    .selectContainer ul li:hover{background:#F5F5F5}
+
+    .selectContainer ul.dis{display:block!important;}
+    /*.selectContainer ul.undis{display:noneimportant;}*/
+    .zIndex{z-index:10000!important}
+    .selectContainer .gray{color:#DDD}
+  </style>
+</head>
+<body>
+<div class="selectContainer">
+  <span class="selectOption gray">请选择身份</span>
+  <ul class="selectMenu">
+    <li>江西省</li>
+    <li>广东省</li>
+    <li>江苏省</li>
+    <li>河北省</li>
+    <li>湖南省</li>
+  </ul>
+  <span class="shows"></span>
+</div>
+<br/>
+
+<div class="selectContainer">
+  <span class="selectOption gray">请选择1234</span>
+  <ul class="selectMenu">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>湖5南省</li>
+  </ul>
+  <span class="shows"></span>
+</div>
+<p>huhuhuhu</p>
+<script src="jquery.js" ></script>
+<script src="bootstrap.min.js" ></script>
+<script type="text/javascript">
+  (function($){
+
+    jQuery.fn.select = function(options){
+      return this.each(function(){
+        var $this = $(this);
+        var $shows = $this.find(".shows");
+        var $selectOption = $this.find(".selectOption");
+        var $el = $this.find("ul > li");
+
+        $this.click(function(e){
+          $(this).toggleClass("zIndex");
+          $(this).children("ul").toggleClass("dis");
+          e.stopPropagation();
+        });
+
+        $el.bind("click",function(){
+          var $this_ = $(this);
+
+          $this.find("span").removeClass("gray");
+          $this_.parent().parent().find(".selectOption").text($this_.text());
+        });
+
+        $("body").bind("click",function(){
+          $this.removeClass("zIndex");
+          $this.find("ul").removeClass("dis");
+        });
+
+        //eahc End
+      });
+
+    }
+
+  })(jQuery);
+</script>
+<script type="text/javascript">
+  $(".selectContainer").select();
+</script>
+</body>
+</html>

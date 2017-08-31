@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>点击按钮 添加 删除行</title>
+
+	</head>
+
+	<body>
+		<input type="button" value="add" onclick="test.add()">
+		<table>
+			<tbody id="test"></tbody>
+		</table>
+		<script type="text/javascript">
+			var test = {
+				'tbody': '',
+				'num': 1,
+				'add': function() {
+					if(!this.tbody) {
+						this.tbody = document.getElementById("test");
+					}
+					var text = document.createElement("input");
+					text.type = 'text';
+					text.value = this.num++;
+					var button = document.createElement("input");
+					button.type = 'button';
+					button.value = '删除';
+					var tr = document.createElement("tr");
+					var tdt = document.createElement("td");
+					var tdb = document.createElement("td");
+					tdt.appendChild(text);
+					tdb.appendChild(button);
+					tr.appendChild(tdt);
+					tr.appendChild(tdb);
+					this.tbody.appendChild(tr);
+					var me = this;
+					button.onclick = function() {
+						me.tbody.removeChild(tr);
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>

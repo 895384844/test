@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="bootstrap.css" />
+		<script src="echarts.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+
+		<div class="barChart" id="barChart" style="width: 400px;height: 230px;"></div>
+		<div class="legend-chart" id="legend-chart" style="width: 400px; height: 230px;"></div>
+		<script>
+			createBarChart();
+			createLegendChart();
+
+			function createBarChart() {
+				var barChart = echarts.init(document.getElementById('barChart'));
+				options = {
+					color: ['#3398DB'],
+					tooltip: {
+						trigger: 'axis',
+						axisPointer: { // 坐标轴指示器，坐标轴触发有效
+							type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+						}
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '3%',
+						containLabel: true
+					},
+					xAxis: [{
+						type: 'category',
+						data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+						axisTick: {
+							alignWithLabel: true
+						}
+					}],
+					yAxis: [{
+						type: 'value'
+					}],
+					series: [{
+						name: '直接访问',
+						type: 'bar',
+						barWidth: '60%',
+						data: [10, 52, 200, 334, 390, 330, 220]
+					}]
+				};
+
+				barChart.setOption(options, true);
+			}
+		
+			function createLegendChart() {
+			var legendChart = echarts.init(document.getElementById('legend-chart'));
+			options = {
+				color: ['#3398DB'],
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { // 坐标轴指示器，坐标轴触发有效
+						type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					}
+				},
+				grid: {
+					left: '3%',
+					right: '4%',
+					bottom: '3%',
+					containLabel: true
+				},
+				xAxis: [{
+					type: 'value'
+				}],
+				yAxis: [{
+
+					type: 'category',
+					data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+					axisTick: {
+						alignWithLabel: true
+					}
+				}],
+				series: [{
+					name: '直接访问',
+					type: 'bar',
+					barWidth: '60%',
+					data: [333333, 444444, 555555, 666666, 777777]
+				}]
+			};
+			legendChart.setOption(options, true);
+		}
+		
+		</script>
+	</body>
+
+</html>

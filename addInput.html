@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<div class="wx-form-group">
+		    <ul>
+		        <li class="vote-add-btn">点击添加<>
+		    </ul>
+		</div>
+		<script src="http://hovertree.com/ziyuan/jquery/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		$(".vote-add-btn").click(function() {
+		    var num = $("ul > li").length;
+		    $(this).before("<li class='wx-form-group'><label for='artName' class='sr-only'>选项</label><input type='text' class='wx-form-control' id='artName' placeholder='填写投票选项" + num + "'><span class='del-item'><i class='fa fa-trash-o'>del</i></span><>");
+		    $(".wx-form-group > .del-item").click(function() {
+		        $(this).parent().remove();
+		
+		        for (i = $(this).index() - 1; i < num; i++) {
+		            newnum = i + 1;
+		            $("ul > li").eq(i).find("input").attr("placeholder", "填写投票选项" + newnum);
+		        }
+		    });
+		});
+
+	</script>-->
+	
+	
+	<button onclick="addElementLi()">添加</button>
+	<ul id="parentUl"><li>原li</li></ul>
+	
+
+　　<script>
+	function addElementLi() {
+　　　　var ul = document.getElementById("parentUl");
+
+　　　　//添加 li
+　　　　var li = document.createElement("li");
+		var btn = document.createElement("button");
+
+　　　　//设置 li 属性，如 id
+　　　　li.setAttribute("class", "newli");
+		btn.innerHTML = "remove";
+		btn.setAttribute("onclick","removeElement(this.parentNode)")
+
+　　　　li.innerHTML = "js 动态添加li";
+		li.appendChild(btn)
+　　　　ul.appendChild(li);
+　　}
+	
+	function removeElement(_element){
+         var _parentElement = _element.parentNode;
+         if(_parentElement){
+                _parentElement.removeChild(_element);
+         }
+	}
+
+　　//addElementLi("parentUl");
+	
+	</script>
+	
+	
+	
+	</body>	
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<meta charset="utf-8" />
+
+	<head>
+		<title>滚动列表</title>
+		<style type="text/css">
+			body,
+			ul,
+			li,
+			p,
+			div {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				font-size: 12px;
+			}
+			
+			#tool {
+				position: relative;
+				margin: 0 auto;
+				overflow: hidden;
+				width: 690px;
+			}
+			
+			#list {
+				width: 640px;
+				height: 110px;
+				overflow: hidden;
+				margin: 0 auto;
+				position: relative;
+			}
+			
+			.wrap {
+				position: relative;
+				width: 99999px;
+			}
+			
+			.wrap ul {
+				overflow: hidden;
+				position: absolute;
+				left: 0;
+			}
+			
+			.wrap li {
+				float: left;
+				display: inline;
+				position: relative;
+				width: 128px;
+			}
+			
+			.wrap li img {
+				display: block;
+				margin: 0 auto;
+				width: 120px;
+				height: 100px;
+			}
+			
+			.left,
+			.right {
+				top: 20px;
+				position: absolute;
+				background: url(http://images.cnblogs.com/cnblogs_com/blackwood/416364/o_arrow.png);
+				text-indent: 999em;
+				width: 20px;
+				height: 40px;
+				font-size: 1px;
+				cursor: pointer;
+				overflow: hidden;
+			}
+			
+			.right {
+				right: 0;
+				background-position: 0 -21px;
+			}
+			
+			.left {
+				left: 0;
+			}
+			
+			.left.left-dis,
+			.right.right-dis {
+				cursor: default;
+			}
+			
+			#tool2 {
+				position: relative;
+				margin: 0 auto;
+				overflow: hidden;
+				width: 120px;
+				height: 370px;
+			}
+			
+			#list2 {
+				width: 120px;
+				height: 324px;
+				overflow: hidden;
+				margin-top: 28px;
+				position: relative;
+			}
+			
+			.wrap2 {
+				position: relative;
+				height: 99999px;
+			}
+			
+			.wrap2 ul {
+				overflow: hidden;
+				position: absolute;
+				top: 0;
+			}
+			
+			.wrap2 li {
+				position: relative;
+				width: 120px;
+				height: 108px;
+			}
+			
+			.wrap2 li img {
+				display: block;
+				margin: 0 auto;
+				width: 120px;
+				height: 100px;
+			}
+			
+			.bot,
+			.top {
+				left: 40px;
+				width: 40px;
+				height: 20px;
+				position: absolute;
+				background: url(http://images.cnblogs.com/cnblogs_com/blackwood/416364/o_arrow.png) no-repeat;
+				text-indent: 999em;
+				font-size: 1px;
+				cursor: pointer;
+			}
+			
+			.bot {
+				bottom: 0;
+				background-position: -44px -21px;
+			}
+			
+			.top {
+				top: 0;
+				background-position: -44px 0;
+			}
+			
+			.top.top-dis,
+			.bot.bot-dis {
+				cursor: default;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="tool">
+			<div id="list">
+				<div class="wrap">
+					<ul>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="left">向左</div>
+			<div class="right">向右</div>
+		</div>
+
+		<div id="tool2">
+			<div id="list2">
+				<div class="wrap2">
+					<ul>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+						<li>
+							<img src="images/01.jpg" alt="" />
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="top">向上</div>
+			<div class="bot">向下</div>
+		</div>
+		<script type="text/javascript" src="http://s2.ppsimg.com/t_images/t2/core/js/jquery.min.js?v=20121026"></script>
+
+		<script type="text/javascript">
+			var config = {
+				btn: {
+					left: $(".left"),
+					right: $(".right")
+				},
+				disClass: {
+					left: "left-dis",
+					right: "right-dis"
+				},
+				wrapLength: $("#list").width(),
+				listLength: $("#list ul").width(),
+				$list: $("#list .wrap ul")
+			};
+			$("#tool").delegate(".left", "click", function() {
+				scrollList(config, "left");
+			}).delegate(".right", "click", function() {
+				scrollList(config, "right");
+			});
+
+			var config2 = {
+				btn: {
+					top: $(".top"),
+					bot: $(".bot")
+				},
+				disClass: {
+					top: "top-dis",
+					bot: "bot-dis"
+				},
+				wrapLength: $("#list2").height(),
+				listLength: $("#list2 ul").height(),
+				$list: $("#list2 .wrap2 ul")
+			};
+			$("#tool2").delegate(".top", "click", function() {
+				scrollList(config2, "top");
+			}).delegate(".bot", "click", function() {
+				scrollList(config2, "bot");
+			});
+
+			function scrollList(config, type) {
+				var $list = config.$list;
+				var wrapLength = config.wrapLength;
+				var listLength = config.listLength;
+				var btn = config.btn;
+				var disClass = config.disClass;
+				switch(type) {
+					case "left":
+						var left = parseInt($list.css("left"));
+						var scrollLeft;
+						if(left + wrapLength >= 0) {
+							scrollLeft = 0;
+							btn.left.addClass(disClass.left);
+						} else {
+							scrollLeft = left + wrapLength;
+							btn.right.removeClass(disClass.right);
+						}
+						$list.animate({
+							left: scrollLeft
+						});
+						break;
+					case "right":
+						var left = parseInt($list.css("left"));
+						var scrollLeft;
+						if(listLength + left - wrapLength < wrapLength) {
+							scrollLeft = -(listLength - wrapLength);
+							btn.right.addClass(disClass.right);
+						} else {
+							scrollLeft = left - wrapLength;
+							btn.left.removeClass(disClass.left);
+						}
+						$list.animate({
+							left: scrollLeft
+						});
+						break;
+					case "top":
+						var top = parseInt($list.css("top"));
+						var scrollTop;
+						if(top + wrapLength >= 0) {
+							scrollTop = 0;
+							btn.top.addClass(disClass.top);
+						} else {
+							scrollTop = top + wrapLength;
+							btn.bot.removeClass(disClass.bot);
+						}
+						$list.animate({
+							top: scrollTop
+						});
+						break;
+					case "bot":
+						var top = parseInt($list.css("top"));
+						var scrollTop;
+						if(listLength + top - wrapLength < wrapLength) {
+							scrollTop = -(listLength - wrapLength);
+							btn.bot.addClass(disClass.bot);
+						} else {
+							scrollTop = top - wrapLength;
+							btn.top.removeClass(disClass.top);
+						}
+						$list.animate({
+							top: scrollTop
+						});
+						break;
+					default:
+						return;
+				}
+			};
+		</script>
+
+	</body>
+
+</html>

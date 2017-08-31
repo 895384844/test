@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		
+		<style>
+			.alwaysShow{
+				height: 24px;
+				overflow: hidden;
+			}
+			.toogleShow{
+				height: auto;
+				overflow: visible;
+			}
+			.toogle-input{float: left;!important width: 200px;!important}
+			/*form{float: left;!important width: 200px;!important}*/
+			.toogle-btn{
+				position: absolute;
+				right: 10px;
+				top: 10px;
+			}
+		</style>
+	</head>
+
+	<body ng-app="mapp" ng-controller="mainCtrl">
+		
+		<div ng-class="{'toogleShow': chengeH,'alwaysShow': currentH}">
+			<form action="#" class="toogle-input"><input type="text" /><span>0001</span></form>
+			<form action="#" class="toogle-input"><input type="text" /><span>0002</span></form>
+			<form action="#" class="toogle-input"><input type="text" /><span>0003</span></form>
+			<form action="#" class="toogle-input"><input type="text" /><span>0004</span></form>
+			<form action="#" class="toogle-input"><input type="text" /><span>0005</span></form>
+			<form action="#" class="toogle-input"><input type="text" /><span>0006</span></form>
+			<form action="#" class="toogle-input"><input type="text" /><span>0007</span></form>
+			<form action="#" class="toogle-input"><input type="text" /><span>0008</span></form>
+			<form action="#" class="toogle-input"><input type="text" /><span>0009</span></form>
+			<form action="#" class="toogle-input"><input type="text" /><span>0010</span></form>
+		</div>
+		<button ng-click="toogleH()" class="toogle-btn">click</button>
+		
+		
+		<script type="text/javascript" src="angular.js"></script>
+		<script>
+			var mapp = angular.module("mapp",[]);
+			mapp.controller("mainCtrl",function($scope){
+				$scope.currentH = true;
+				$scope.changeH = false;
+				$scope.toogleH = function(){
+					$scope.changeH = !$scope.changeH;
+					$scope.currentH = !$scope.currentH;
+				}
+			})
+		</script>
+	</body>
+
+</html>

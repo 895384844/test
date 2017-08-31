@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS实现列表内容项的增加、删除</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"/>
+</head>
+<body style="padding: 20px">
+    <div class="container" ng-controller="myctrl">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-5">
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="item">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" ng-click="add()">增加内容</button>
+                </span>
+            </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-2 col-md-5">
+                <h6 style="margin-top: 10px;" ng-if="items.length>0">列表内容：</h6>
+                <div class="list-group">
+                    <div class="list-group-item" ng-repeat="item in items track by $index">
+                        {{item}} <a href="#" ng-click="items.splice($index,1)">删除</a>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <script>
+        angular.module('myapp',[])
+               .controller('myctrl',function($scope){                       
+                       
+                       $scope.item = '';
+                       $scope.items = [];
+                       //增加列表项方法
+                       $scope.add = function(){
+                       	   $scope.item = "1"
+                           $scope.items.push($scope.item);
+                       }
+               })
+    </script>
+    
+</body>
+</html>

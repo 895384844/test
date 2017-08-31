@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aes-加密解密</title>
+    <script src="aes.min.js"></script>
+    <script src="aes_utils.js"></script>
+    <style>
+        div {
+            margin-bottom: 20px;
+        }
+        div input[type='text']{
+            width: 400px;
+        }
+        div label {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="text" id="jia_value"><input type="button" value="加密" id="jia_btn">
+    <label for="">加密结果：</label><span id="jia_result" class="result"></span>
+</div>
+<div>
+    <input type="text" id="jie_value"><input type="button" value="解密" id="jie_btn">
+    <label for="">解密结果：</label><span id="jie_result" class="result"></span>
+</div>
+
+<script>
+    var jia_value = document.getElementById('jia_value');
+    var jia_btn = document.getElementById('jia_btn');
+    var jia_result = document.getElementById('jia_result');
+    var jie_value = document.getElementById('jie_value');
+    var jie_btn = document.getElementById('jie_btn');
+    var jie_result = document.getElementById('jie_result');
+
+    jia_btn.onclick = function () {
+        var value = jia_value.value;
+        var result = aesEncode(value);
+        jia_result.textContent = result;
+    }
+    jie_btn.onclick = function () {
+        var value = jie_value.value;
+        var result = aesDecode(value);
+        jie_result.textContent = result;
+    }
+</script>
+</body>
+</html>

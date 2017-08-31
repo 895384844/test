@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="gritter.css.scss" />
+		<script src="http://hovertree.com/ziyuan/jquery/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		hello
+		<audio id="sound" autoplay="autoplay">
+			
+			<script src="gritter.js" type="text/javascript" charset="utf-8"></script>
+
+			<script>
+				document.getElementById("sound").src = "<%=basePath%>admin/media/global.wav";
+				jQuery(document).ready(function() {
+					setInterval(function() {
+						$.post('http://192.168.1.124:8080/EFS/blacklist/voice', function(data) {
+							var json = eval("(" + data + ")");
+							$.each(json, function(index, item) {
+								$("#line" + item.id).html("")
+								$.each(item.localList, function(index, item2) {
+									if(item2.attendOCList != "") {
+										$("#line" + item.id).append("<li class='in' id='in" + item2.id + "'><div class='avatar'>" +
+											item2.location + "</div><div class='message'><ul id=li" + item2.id + "></ul></div></li>")
+									}
+									$.each(item2.attendOCList, function(index, item3) {
+										if(item3.status == 0) {
+											$("#li" + item2.id).append("<li class='user'><span class='username'>" + item3.person_name +
+												"</span><br><span style='color:red;' class='username'>时间: " +
+												item3.today + " " + item3.times + "</span><br><span class='username'>电话:" +
+												item3.person_phone + "</span><br><span class='username'>身份证:" +
+												item3.card_id + "</span></li><hr>");
+										} else {
+											$("#li" + item2.id).append("<li class='user'><span class='username'>" +
+												item3.person_name + "</span><br><span style='color:red;' class='username'>时间: " +
+												item3.today + " " + item3.times + "</span><br><span class='username'>电话:" +
+												item3.person_phone + "</span><br><span class='username'>身份证:" +
+												item3.card_id + "</span></li><hr>");
+											document.getElementById("sound").src = "<%=basePath%>admin/media/global.wav";
+											setTimeout(function() {
+												var unique_id = $.gritter.add({
+													title: item3.person_name + "(" + item2.location + ")",
+													text: "<span class='username'>" + item3.person_name +
+														"</span><br><span style='color:red;' class='username'>时间: " +
+														item3.today + " " + item3.times + "</span><br><span class='username'>电话:" +
+														item3.person_phone + "</span><br><span class='username'>身份证:" + item3.card_id + "</span>",
+													sticky: true,
+													time: '',
+													class_name: 'my-sticky-class'
+												});
+												setTimeout(function() {
+													$.gritter.remove(unique_id, {
+														fade: true,
+														speed: 'slow'
+													});
+												}, 12000);
+											}, 2000);
+										}
+									});
+								});
+							});
+						});
+					}, 2000);
+				});
+			</script>
+	</body>
+
+</html>
